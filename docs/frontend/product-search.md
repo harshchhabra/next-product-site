@@ -18,8 +18,8 @@ The **Product Search Page** provides a simple interface at `/product-search` to 
 1. Navigate to `/product-search`.
 2. Recommended products are displayed by default. Products are considered recommended if:
    - Rating is **greater than 4.7**, and
-   - Product is **in stock**.  
-     Products are sorted in **descending order of rating**.
+   - Product is **in stock**.
+   - Products are sorted in **descending order of rating**.
 3. Type in the search box to filter products.
 4. Filtered results appear below the input in real-time.
 
@@ -27,11 +27,11 @@ The **Product Search Page** provides a simple interface at `/product-search` to 
 
 ## File Structure
 
-| Type           | Path                                                                                                                                                |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Page**       | `/app/product-search/page.tsx`                                                                                                                      |
-| **Components** | `/src/components/molecules/NoProducts.tsx` <br> `/src/components/molecules/ProductCard.tsx` <br> `/src/components/molecules/ProductSearchInput.tsx` |
-| **Utility**    | `/src/utils/product-search/getProducts.ts`                                                                                                          |
+| Type          | Path                                                                                                                                                |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Page**      | `/app/product-search/page.tsx`                                                                                                                      |
+| **Component** | `/src/components/organisms/ProductSearch.tsx`                                                                                                       |
+| **Molecules** | `/src/components/molecules/NoProducts.tsx` <br> `/src/components/molecules/ProductCard.tsx` <br> `/src/components/molecules/ProductSearchInput.tsx` |
 
 ---
 

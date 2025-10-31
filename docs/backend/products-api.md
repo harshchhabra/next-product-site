@@ -28,8 +28,6 @@ Retrieve all products or filter by a search term.
 
 ```http
 GET /api/products?q=tools
-Response
-Status Code: 200 OK
 ```
 
 ```json

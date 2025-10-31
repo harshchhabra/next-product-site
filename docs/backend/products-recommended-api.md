@@ -14,7 +14,7 @@ Recommended products API provides endpoints to retrieve the recommended products
 | ------ | --------------------------- | ----------------------------------------------------- |
 | GET    | `/api/products/recommended` | Retrieve a list of the first 51 recommended products. |
 
-## 1. GET /api/products
+## 1. GET /api/products/recommended
 
 Retrieve recommended products. Recommended products are filtered by **high ratings** and **availability in stock**.
 
@@ -22,8 +22,6 @@ Retrieve recommended products. Recommended products are filtered by **high ratin
 
 ```http
 GET /api/products/recommended
-Response
-Status Code: 200 OK
 ```
 
 ```json
