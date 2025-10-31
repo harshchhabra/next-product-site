@@ -21,9 +21,16 @@
     "pnpm": ">=9"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tanstack/react-query": "^5.90.5",
+    "@tanstack/react-query-devtools": "^5.90.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.548.0",
     "next": "15.5.4",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
