@@ -8,14 +8,16 @@
     "build": "next build",
     "format": "prettier . --write",
     "preinstall": "only-allow pnpm",
-    "test": "jest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky",
     "generate-large-data": "node ./scripts/generateLargeData.js",
     "generate-small-data": "node ./scripts/generateSmallData.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
+    "test": "jest --coverage",
+    "precommit-checks": "npm run lint || echo 'Lint errors found!' && npm run test -- --coverageThreshold='{\"global\":{\"branches\":50,\"functions\":50,\"lines\":50,\"statements\":50}}' || echo 'Tests or coverage failed!'"
+
   },
   "engines": {
     "node": ">=22",
@@ -32,6 +34,12 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwind-merge": "^3.3.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "jest --bail --findRelatedTests --passWithNoTests"
+    ]
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
