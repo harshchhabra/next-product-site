@@ -9,7 +9,7 @@ export default function NoProduct() {
       </div>
       <h3 className='text-2xl font-bold text-gray-900 mb-2'>No products found</h3>
       <p className='text-gray-600 text-center max-w-md mb-6'>
-        We couldn't find any products matching your search. Try adjusting your search terms.
+        We couldn&apos;t find any products matching your search. Try adjusting your search terms.
       </p>
     </div>
   );

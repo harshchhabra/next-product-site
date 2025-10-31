@@ -5,13 +5,13 @@ import ProductsSearch from '@/src/components/organisms/ProductSearch';
 import { getProducts, getRecommendedProducts } from '@/src/services/product';
 import { Product } from '@/src/type/products';
 
-interface ProductsSearchPageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export async function generateMetadata({ searchParams }: ProductsSearchPageProps): Promise<Metadata> {
-  const params = await Promise.resolve(searchParams);
-  const query = Array.isArray(params.q) ? params.q[0] : params.q || '';
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}): Promise<Metadata> {
+  const queryParams = await searchParams;
+  const query = Array.isArray(queryParams.q) ? queryParams.q[0] : queryParams.q || '';
   const title = query ? `Search results for "${query}"` : 'Recommended Products';
 
   return {
@@ -24,9 +24,13 @@ export async function generateMetadata({ searchParams }: ProductsSearchPageProps
   };
 }
 
-export default async function ProductsSearchPage({ searchParams }: ProductsSearchPageProps) {
-  const params = await Promise.resolve(searchParams);
-  const query = Array.isArray(params.q) ? params.q[0] : params.q || '';
+export default async function ProductsSearchPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
+  const queryParams = await searchParams;
+  const query = Array.isArray(queryParams.q) ? queryParams.q[0] : queryParams.q || '';
 
   const serverQueryClient = new QueryClient();
 

@@ -18,17 +18,6 @@ export default function ProductSearch({
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [searchQuery, setSearchQuery] = useState(keyword);
 
-  const triggerSearch = useCallback(
-    (value: string) => {
-      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
-
-      debounceTimerRef.current = setTimeout(() => {
-        onSearch(value.trim());
-      }, debounceDelay);
-    },
-    [debounceDelay]
-  );
-
   const handleClearSearch = useCallback(() => {
     setSearchQuery('');
     onSearch('');
@@ -37,22 +26,33 @@ export default function ProductSearch({
 
   useEffect(() => {
     if (searchQuery) {
-      triggerSearch(searchQuery);
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+
+      debounceTimerRef.current = setTimeout(() => {
+        onSearch(searchQuery.trim());
+      }, debounceDelay);
     } else {
       if (debounceTimerRef.current) {
         clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
       }
       onSearch('');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery, debounceDelay]);
 
+  useEffect(() => {
     return () => {
-      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
+      }
     };
-  }, [searchQuery, triggerSearch]);
+  }, []);
 
   return (
     <div className='relative flex w-full'>
-      <Search className='absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400' />
+      <Search role='img' className='absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400' />
       <Input
         inputSize='lg'
         ref={searchInputRef}

@@ -15,6 +15,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ message: 'success', data: products }, { status: 200 });
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ message: 'Failed to fetch products', data: [] }, { status: 500 });
   }
 }

@@ -14,6 +14,7 @@ const ProductCard = memo(
         {[...Array(totalStars)].map((_, index) => (
           <svg
             key={index}
+            role='img'
             className={`w-4 h-4 ms-1 ${index < filledStars ? 'text-yellow-300' : 'text-gray-300'}`}
             aria-hidden='true'
             xmlns='http://www.w3.org/2000/svg'
