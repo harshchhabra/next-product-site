@@ -5,7 +5,7 @@ import { ReactNode, useState } from 'react';
 
 interface ProvidersProps {
   children: ReactNode;
-  dehydratedState?: DehydratedState; // <-- add this
+  dehydratedState?: DehydratedState;
 }
 
 export function Providers({ children, dehydratedState }: ProvidersProps) {
